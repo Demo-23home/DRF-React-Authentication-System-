@@ -25,9 +25,17 @@ SECRET_KEY = "django-insecure-!#i5audqnnfr0p50-&-=caot86ao*g#b89ibqq-4!njr5ytc62
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost',
+#     'http://127.0.0.1',
+#     'http://0.0.0.0',
+# ]
 
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_CREDENTIALS = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,14 +51,6 @@ INSTALLED_APPS = [
     #Internal Apps
     'user_api',
 ]
-
-
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-]
-
-CORS_ALLOW_CRIDENTIALS = True
 
 
 MIDDLEWARE = [
@@ -151,3 +151,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication'
     ),
 }
+# settings.py
+
+APPEND_SLASH = False
+
+
