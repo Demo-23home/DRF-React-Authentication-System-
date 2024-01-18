@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,18 +20,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-!#i5audqnnfr0p50-&-=caot86ao*g#b89ibqq-4!njr5ytc62"
+# SECRET_KEY = "django-insecure-!#i5audqnnfr0p50-&-=caot86ao*g#b89ibqq-4!njr5ytc62"
+SECRET_KEY = os.getenv('SECRET_KEY')
 
+DEBUG = os.getenv('DEBUG')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost',
-#     'http://127.0.0.1',
-#     'http://0.0.0.0',
-# ]
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost',
+    'http://127.0.0.1',
+    'http://0.0.0.0',
+]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -130,7 +131,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = "static/"
+# STATIC_URL = "static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -154,5 +155,12 @@ REST_FRAMEWORK = {
 # settings.py
 
 APPEND_SLASH = False
+# STATIC_ROOT = '/app/static/'
+# STATIC_URL = "/static/"
+# STATIC_ROOT = BASE_DIR / "static/"
+
+STATIC_URL = 'static/'
+STATIC_ROOT = '/static/'
+
 
 
